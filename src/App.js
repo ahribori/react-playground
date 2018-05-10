@@ -6,17 +6,34 @@ import Input from './components/Input';
 import NewLifecycleExamples from './components/NewLifecycleExamples';
 import { SampleProvider } from './contexts/SampleContext';
 
-const App = () => {
-    return (
-        <SampleProvider>
-            <div className="panes">
-                <LeftPane />
-                <RightPane />
-            </div>
-            <Input />
-            <NewLifecycleExamples />
-        </SampleProvider>
-    );
-};
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            message: '',
+        }
+    }
+
+    handleChange = e => {
+        this.setState({
+            message: e.target.value,
+        })
+    }
+
+    render() {
+        return (
+            <SampleProvider>
+                <div className="panes">
+                    <LeftPane />
+                    <RightPane />
+                </div>
+                <Input />
+                <NewLifecycleExamples message={this.state.message}/>
+                <input type="text" onChange={this.handleChange}/>
+
+            </SampleProvider>
+        );
+    }
+}
 
 export default App;
