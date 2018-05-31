@@ -5,6 +5,7 @@ import RightPane from './components/RightPane';
 import Input from './components/Input';
 import NewLifecycleExamples from './components/NewLifecycleExamples';
 import { SampleProvider } from './contexts/SampleContext';
+import MyStyledComponent from './components/MyStyledComponent';
 
 class App extends React.Component {
     constructor(props) {
@@ -30,7 +31,7 @@ class App extends React.Component {
                 <Input />
                 <NewLifecycleExamples message={this.state.message}/>
                 <input type="text" onChange={this.handleChange}/>
-
+                <MyStyledComponent />
             </SampleProvider>
         );
     }
