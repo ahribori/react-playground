@@ -29,7 +29,7 @@ class App extends React.Component {
                     <RightPane />
                 </div>
                 <Input />
-                <NewLifecycleExamples message={this.state.message}/>
+                <NewLifecycleExamples message={this.state.message} text={"hi"}/>
                 <input type="text" onChange={this.handleChange}/>
                 <MyStyledComponent />
             </SampleProvider>
