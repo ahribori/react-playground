@@ -1,11 +1,15 @@
 import './App.css';
 import React from 'react';
+import {
+  withRouter,
+} from 'react-router-dom';
 import LeftPane from './components/LeftPane';
 import RightPane from './components/RightPane';
 import Input from './components/Input';
 import NewLifecycleExamples from './components/NewLifecycleExamples';
 import { SampleProvider } from './contexts/SampleContext';
 import MyStyledComponent from './components/MyStyledComponent';
+import routes from './routes';
 
 class App extends React.Component {
     constructor(props) {
@@ -32,9 +36,11 @@ class App extends React.Component {
                 <NewLifecycleExamples message={this.state.message} text={"hi"}/>
                 <input type="text" onChange={this.handleChange}/>
                 <MyStyledComponent />
+              <hr />
+              {routes}
             </SampleProvider>
         );
     }
 }
 
-export default App;
+export default withRouter(App);
