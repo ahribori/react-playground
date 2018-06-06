@@ -1,16 +1,20 @@
 import React from 'react';
 import {
-  Route,
-  Switch,
+    Route,
+    Switch,
 } from 'react-router-dom';
 
 import {
-  Home,
+    Home,
+    NewFeature,
+    Calendar,
 } from './containers';
 
 
 export default (
     <Switch>
-      <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Home}/>
+        <Route exact path="/new" component={NewFeature}/>
+        <Route exact path="/calendar" component={Calendar}/>
     </Switch>
 );

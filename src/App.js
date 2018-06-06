@@ -1,46 +1,45 @@
 import './App.css';
 import React from 'react';
 import {
-  withRouter,
+    withRouter,
+    Link,
 } from 'react-router-dom';
-import LeftPane from './components/LeftPane';
-import RightPane from './components/RightPane';
-import Input from './components/Input';
-import NewLifecycleExamples from './components/NewLifecycleExamples';
-import { SampleProvider } from './contexts/SampleContext';
-import MyStyledComponent from './components/MyStyledComponent';
+import styled from 'styled-components';
 import routes from './routes';
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            message: '',
-        }
-    }
 
-    handleChange = e => {
-        this.setState({
-            message: e.target.value,
-        })
-    }
+    renderMenu = () => (
+        <ul className={'menu'}>
+            <li><Link to={'/'}>Home</Link></li>
+            <li><Link to={'/new'}>React 16.x new feature</Link></li>
+            <li><Link to={'/calendar'}>Calendar</Link></li>
+        </ul>
+    );
 
     render() {
         return (
-            <SampleProvider>
-                <div className="panes">
-                    <LeftPane />
-                    <RightPane />
+            <div className={this.props.className}>
+                {this.renderMenu()}
+                <div className={'routes'}>
+                    {routes}
                 </div>
-                <Input />
-                <NewLifecycleExamples message={this.state.message} text={"hi"}/>
-                <input type="text" onChange={this.handleChange}/>
-                <MyStyledComponent />
-              <hr />
-              {routes}
-            </SampleProvider>
+            </div>
         );
     }
 }
 
-export default withRouter(App);
+const StyledApp = styled(App)`
+  box-sizing: border-box;
+  display: flex;
+  & .menu {
+    border-right: 1px dashed gray;
+    flex-shrink: 0;
+    flex-basis: 200px;
+  }
+  & .routes {
+    padding: 0.8rem;
+  }
+`;
+
+export default withRouter(StyledApp);
