@@ -14,6 +14,7 @@ class App extends React.Component {
             <li><Link to={'/'}>Home</Link></li>
             <li><Link to={'/new'}>React 16.x new feature</Link></li>
             <li><Link to={'/calendar'}>Calendar</Link></li>
+            <li><Link to={'/google-sheet'}>Google Sheet</Link></li>
         </ul>
     );
 
