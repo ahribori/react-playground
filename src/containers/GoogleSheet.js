@@ -1,6 +1,10 @@
 import React from 'react';
 import Script from 'react-load-script';
 import styled from 'styled-components';
+import $ from 'jquery';
+import moment from 'moment';
+import 'fullcalendar';
+import 'fullcalendar/dist/fullcalendar.min.css';
 
 const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || '';
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY || '';
@@ -48,14 +52,15 @@ class GoogleSheet extends React.Component {
     getSheet = () => {
         window.gapi.client.sheets.spreadsheets.values.get({
             spreadsheetId: '1bAR5Dh3QWiXDYB0_gaTBDTd6WkutBKO3Q5VVb5W0WGA',
-            range: '시트1!A1:C5',
+            range: '시트2',
         }).then((response) => {
             const { values } = response.result;
-            this.setState({ data: values });
+            this.setState({ data: values }, this.renderCalendar);
         }, (error) => {
             console.error(error.result.error.message);
         });
     };
+
 
     updateCell = () => {
         window.gapi.client.sheets.spreadsheets.values.update({
@@ -106,9 +111,89 @@ class GoogleSheet extends React.Component {
         }
     };
 
+    renderCalendar = () => {
+        if (!this.state.data) {
+            return null;
+        } else {
+            const $calendar = $('#calendar');
+            const eventSources = [
+                {
+                    color: '#673AB7',
+                    textColor: 'white',
+                    events: []
+                },
+                {
+                    color: '#FFEB3B',
+                    textColor: 'black',
+
+                    events: []
+                },
+                {
+                    color: '#FF9800',
+                    textColor: 'white',
+                    events: []
+                },
+                {
+                    color: '#2196F3',
+                    textColor: 'white',
+
+                    events: []
+                },
+                {
+                    color: '#607D8B',
+                    textColor: 'white',
+                    events: []
+                },
+            ];
+            this.state.data.forEach(row => {
+                const account = row[0];
+                const name = row[1];
+                const remainder = row[2];
+                const vacationType = row[3];
+                const event = {
+                    title: `${account} ${vacationType}`,
+                    start: `${remainder}`,
+                    allDay: false,
+                };
+                switch (vacationType.replace(/\s/, '')) {
+                    case '하루' || '1일':
+                        eventSources[0].events.push(event);
+                        break;
+                    case '오전반반차':
+                        eventSources[1].events.push(event);
+                        break;
+                    case '오전반차' || '0.5일':
+                        eventSources[2].events.push(event);
+                        break;
+                    case '오후반반차':
+                        eventSources[3].events.push(event);
+                        break;
+                    case '오후반차':
+                        eventSources[4].events.push(event);
+                        break;
+                    default:
+                        eventSources[0].events.push(event);
+
+                }
+
+            });
+            $calendar.fullCalendar({
+                selectable: true,
+                select: (start, end, event, view) => {
+                },
+                height: $(window).height() * 0.83,
+                windowResize: () => {
+                    $calendar.fullCalendar('option', 'height', $(window).height() * 0.83);
+                },
+                eventSources,
+                displayEventTime: false,
+            });
+        }
+    };
+
     render() {
         return (
-            <div>
+            <div className={this.props.className}>
                 <Script
                     url={'https://apis.google.com/js/api.js'}
                     attributes={{ async: 1, defer: 1 }}
@@ -120,6 +205,7 @@ class GoogleSheet extends React.Component {
                 <button id="signout-button" style={{ display: 'none' }}>Sign Out</button>
                 <button id="update-button" onClick={this.updateCell}>Update Cell</button>
                 <hr/>
+                <div id="calendar" />
                 {this.renderSheet()}
             </div>
         );
@@ -127,8 +213,7 @@ class GoogleSheet extends React.Component {
 }
 
 const StyledGoogleSheet = styled(GoogleSheet)`
-  margin: 10px;
-  border: 1px dashed gray;
+  font-family: Noto Sans KR;
 `;
 
 export default StyledGoogleSheet;
