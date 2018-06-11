@@ -2,7 +2,6 @@ import React from 'react';
 import Script from 'react-load-script';
 import styled from 'styled-components';
 import $ from 'jquery';
-import moment from 'moment';
 import 'fullcalendar';
 import 'fullcalendar/dist/fullcalendar.min.css';
 
@@ -16,6 +15,8 @@ class GoogleSheet extends React.Component {
         super(props);
         this.state = {
             data: null,
+            auth: false,
+            pending: true,
         };
     }
 
@@ -55,8 +56,9 @@ class GoogleSheet extends React.Component {
             range: '시트2',
         }).then((response) => {
             const { values } = response.result;
-            this.setState({ data: values }, this.renderCalendar);
+            this.setState({ data: values, pending: false, auth: true }, this.renderCalendar);
         }, (error) => {
+            this.setState({ pending: false });
             console.error(error.result.error.message);
         });
     };
@@ -103,7 +105,7 @@ class GoogleSheet extends React.Component {
                 return (
                     <div key={row}>
                         {!Array.isArray(row) ? (<span className={this.props.className}>{row}</span>) : row.map(col => {
-                            return <span key={col} className={this.props.className}>{col}</span>;
+                            return <span key={col} className={this.props.className} style={{ marginRight: 50 }}>{col}</span>;
                         })}
                     </div>
                 );
@@ -112,7 +114,7 @@ class GoogleSheet extends React.Component {
     };
 
     renderCalendar = () => {
-        if (!this.state.data) {
+        if (!this.state.data || !this.state.auth) {
             return null;
         } else {
             const $calendar = $('#calendar');
@@ -155,7 +157,8 @@ class GoogleSheet extends React.Component {
                     start: `${remainder}`,
                     allDay: false,
                 };
-                switch (vacationType.replace(/\s/, '')) {
+                const filteredVacationType = vacationType.replace(/\s/, '');
+                switch (filteredVacationType) {
                     case '하루' || '1일':
                         eventSources[0].events.push(event);
                         break;
@@ -206,6 +209,8 @@ class GoogleSheet extends React.Component {
                 <button id="update-button" onClick={this.updateCell}>Update Cell</button>
                 <hr/>
                 <div id="calendar" />
+                {this.state.pending && '불러오는중...'}
+                {!this.state.pending && !this.state.auth && '접근 권한이 없는 계정입니다.'}
                 {this.renderSheet()}
             </div>
         );
