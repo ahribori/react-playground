@@ -8,7 +8,8 @@ import {
     Home,
     NewFeature,
     Calendar,
-    GoogleSheet
+    GoogleSheet,
+    Rx,
 } from './containers';
 
 
@@ -18,5 +19,6 @@ export default (
         <Route exact path="/new" component={NewFeature}/>
         <Route exact path="/calendar" component={Calendar}/>
         <Route exact path="/google-sheet" component={GoogleSheet}/>
+        <Route exact path="/rx" component={Rx}/>
     </Switch>
 );
