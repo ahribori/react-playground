@@ -16,6 +16,7 @@ class App extends React.Component {
             <li><Link to={'/calendar'}>Calendar</Link></li>
             <li><Link to={'/google-sheet'}>Google Sheet</Link></li>
             <li><Link to={'/rx'}>Rx.js</Link></li>
+            <li><Link to={'/editor'}>TUIEditor</Link></li>
         </ul>
     );
 
@@ -40,6 +41,7 @@ const StyledApp = styled(App)`
     flex-basis: 200px;
   }
   & .routes {
+    width: 100%;
     padding: 0.8rem;
   }
 `;

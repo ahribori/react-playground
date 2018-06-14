@@ -10,6 +10,7 @@ import {
     Calendar,
     GoogleSheet,
     Rx,
+    TUIEditor,
 } from './containers';
 
 
@@ -20,5 +21,6 @@ export default (
         <Route exact path="/calendar" component={Calendar}/>
         <Route exact path="/google-sheet" component={GoogleSheet}/>
         <Route exact path="/rx" component={Rx}/>
+        <Route exact path="/editor" component={TUIEditor}/>
     </Switch>
 );
