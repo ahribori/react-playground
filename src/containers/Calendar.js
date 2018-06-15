@@ -19,14 +19,18 @@ class Calendar extends React.Component {
 
     componentDidMount() {
         const $calendar = $('#calendar');
+
         $calendar.fullCalendar({
+            height: () => {
+                return window.innerHeight - 30;
+            },
+            windowResize: () => {
+               $calendar.fullCalendar('option', 'height', window.innerHeight - 30);
+            },
+            windowResizeDelay: 0,
             selectable: true,
             select: (start, end, event, view) => {
                 this.addEvent(start, end);
-            },
-            height: $(window).height() * 0.83,
-            windowResize: () => {
-                $calendar.fullCalendar('option', 'height', $(window).height() * 0.83);
             },
             eventSources: [
                 {
