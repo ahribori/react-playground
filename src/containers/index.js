@@ -4,6 +4,7 @@ import Calendar from './Calendar';
 import GoogleSheet from './GoogleSheet';
 import Rx from './Rx';
 import TUIEditor from './TUIEditor';
+import DecoratorTest from './DecoratorTest';
 
 export {
     Home,
@@ -12,4 +13,5 @@ export {
     GoogleSheet,
     Rx,
     TUIEditor,
+    DecoratorTest,
 };

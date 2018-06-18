@@ -17,6 +17,7 @@ class App extends React.Component {
             <li><Link to={'/google-sheet'}>Google Sheet</Link></li>
             <li><Link to={'/rx'}>Rx.js</Link></li>
             <li><Link to={'/editor'}>TUIEditor</Link></li>
+            <li><Link to={'/decorator'}>Decorator Test</Link></li>
         </ul>
     );
 

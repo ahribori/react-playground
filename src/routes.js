@@ -11,6 +11,7 @@ import {
     GoogleSheet,
     Rx,
     TUIEditor,
+    DecoratorTest,
 } from './containers';
 
 
@@ -22,5 +23,6 @@ export default (
         <Route exact path="/google-sheet" component={GoogleSheet}/>
         <Route exact path="/rx" component={Rx}/>
         <Route exact path="/editor" component={TUIEditor}/>
+        <Route exact path="/decorator" component={DecoratorTest}/>
     </Switch>
 );
