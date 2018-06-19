@@ -5,6 +5,7 @@ import GoogleSheet from './GoogleSheet';
 import Rx from './Rx';
 import TUIEditor from './TUIEditor';
 import DecoratorTest from './DecoratorTest';
+import Zzalbang from './Zzalbang';
 
 export {
     Home,
@@ -14,4 +15,5 @@ export {
     Rx,
     TUIEditor,
     DecoratorTest,
+    Zzalbang,
 };

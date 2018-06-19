@@ -12,6 +12,7 @@ import {
     Rx,
     TUIEditor,
     DecoratorTest,
+    Zzalbang,
 } from './containers';
 
 
@@ -24,5 +25,7 @@ export default (
         <Route exact path="/rx" component={Rx}/>
         <Route exact path="/editor" component={TUIEditor}/>
         <Route exact path="/decorator" component={DecoratorTest}/>
+        <Route exact path="/decorator" component={DecoratorTest}/>
+        <Route exact path="/zzalbang" component={Zzalbang}/>
     </Switch>
 );

@@ -18,6 +18,7 @@ class App extends React.Component {
             <li><Link to={'/rx'}>Rx.js</Link></li>
             <li><Link to={'/editor'}>TUIEditor</Link></li>
             <li><Link to={'/decorator'}>Decorator Test</Link></li>
+            <li><Link to={'/zzalbang'}>Zzalbang</Link></li>
         </ul>
     );
 
