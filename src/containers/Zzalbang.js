@@ -6,56 +6,53 @@ class Zzalbang extends React.Component {
         this.myCanvas = React.createRef();
         this.state = {
             message: '',
-            ctx: null,
+            context: null,
+            image: null,
         };
     }
 
     componentDidMount() {
         const canvas = this.myCanvas.current;
         const context = canvas.getContext('2d');
-        const image = new Image();
-        image.onload = function () {
-            canvas.width = image.width;
-            canvas.height = image.height;
-            context.drawImage(image, 0, 0);
-        };
-        image.src = 'https://www.html5canvastutorials.com/demos/assets/darth-vader.jpg';
-        this.image = image;
-        this.setMessage();
+        this.setState({
+            context,
+        }, () => {
+            const image = new Image();
+            image.onload = () => {
+                canvas.width = image.width;
+                canvas.height = image.height;
+                this.state.context.drawImage(image, 0, 0);
+            };
+            image.src = 'https://www.html5canvastutorials.com/demos/assets/darth-vader.jpg';
+            this.setState({
+                image,
+            }, () => {
+                this.paint();
+            });
+        });
+
     }
 
     componentDidUpdate() {
-        this.setMessage();
+        this.paint();
     }
 
-    setMessage = () => {
-        this.rePaint();
-        const context = this.getContext();
+    paint = () => {
+        const canvas = this.myCanvas.current;
+        const context = this.state.context;
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        if (this.state.image) {
+            context.drawImage(this.state.image, 0, 0);
+        }
         context.font = '30px Arial';
         context.fillText(this.state.message, 10, 50);
-    };
-
-    drawImage = () => {
-        const canvas = this.myCanvas.current;
-        const context = canvas.getContext('2d');
-        context.drawImage(this.image, 0, 0);
-    };
-
-    rePaint = () => {
-        const canvas = this.myCanvas.current;
-        this.getContext().clearRect(0, 0, canvas.width, canvas.height);
-        this.drawImage();
-    };
-
-    getContext = () => {
-        const canvas = this.myCanvas.current;
-        return canvas.getContext('2d');
     };
 
     render() {
         return (
             <div>
                 <canvas id="myCanvas" width={500} height={500} ref={this.myCanvas}/>
+                <br />
                 <input type="text" value={this.state.message}
                        onChange={e => this.setState({ message: e.target.value })}/>
             </div>
