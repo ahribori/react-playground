@@ -6,7 +6,7 @@ import moment from 'moment';
 import 'fullcalendar';
 import 'fullcalendar/dist/fullcalendar.min.css';
 
-const Dialog = styled(({ className, title, show, onSubmit, onClose, handleChange }) => (
+const Dialog = styled(({ className, title, show, onSubmit, onClose, handleChange, handleSelect, selectedValue, rangeSelection }) => (
     <div className={className}>
         <div className="dialog">
             <input
@@ -16,6 +16,47 @@ const Dialog = styled(({ className, title, show, onSubmit, onClose, handleChange
                     handleChange(e.target.value);
                 }}
             />
+            <div>
+                <label>휴가</label>
+                <input name={'type'}
+                       type={'radio'}
+                       value={'휴가'}
+                       checked={selectedValue === '휴가'}
+                       onChange={e => {
+                           handleSelect(e.target.value);
+                       }}
+                />
+            </div>
+            {!rangeSelection &&
+            (
+                <div>
+                    <div>
+                        <label>반차</label>
+                        <input name={'type'}
+                               type={'radio'}
+                               value={'반차'}
+                               checked={selectedValue === '반차'}
+                               onChange={e => {
+                                   handleSelect(e.target.value);
+                               }}
+                        />
+                    </div>
+                    <div>
+                        <label>반반차</label>
+                        <input name={'type'}
+                               type={'radio'}
+                               value={'반반차'}
+                               checked={selectedValue === '반반차'}
+                               onChange={e => {
+                                   handleSelect(e.target.value);
+                               }}
+                        />
+                    </div>
+                </div>
+            )
+            }
+
+
             <button onClick={onSubmit}>등록</button>
             <button onClick={onClose}>닫기</button>
         </div>
@@ -46,14 +87,16 @@ class Calendar extends React.Component {
         this.state = {
             dialogShow: false,
             title: '',
+            selected: '휴가',
             start: null,
             end: null,
+            rangeSelection: false,
         };
     }
 
-    addEvent = (title, start, end) => {
+    addEvent = (title, selected, start, end) => {
         $('#calendar').fullCalendar('renderEvent', {
-            title: title,
+            title: `${selected} - ${title}`,
             start,
             end,
         });
@@ -72,12 +115,23 @@ class Calendar extends React.Component {
             windowResizeDelay: 0,
             selectable: true,
             select: (start, end, event, view) => {
-                this.setState({
-                    dialogShow: true,
-                    title: '',
-                    start,
-                    end,
-                });
+                const diff = end - start;
+                if (diff > 86400000) {
+                    this.setState({
+                        dialogShow: true,
+                        title: '',
+                        start,
+                        end,
+                        rangeSelection: true,
+                    });
+                } else {
+                    this.setState({
+                        dialogShow: true,
+                        title: '',
+                        start,
+                        end,
+                    });
+                }
             },
             eventSources: [
                 {
@@ -86,16 +140,16 @@ class Calendar extends React.Component {
                     events: [
                         {
                             title: 'event1',
-                            start: '2018-06-09',
+                            start: '2018-07-09',
                         },
                         {
                             title: 'event2',
-                            start: '2018-06-11',
-                            end: '2018-06-15',
+                            start: '2018-07-11',
+                            end: '2018-07-15',
                         },
                         {
                             title: 'event3',
-                            start: '2018-06-19T12:30:00',
+                            start: '2018-07-19T12:30:00',
                             allDay: false, // will make the time show
                         },
                     ],
@@ -106,31 +160,32 @@ class Calendar extends React.Component {
                     events: [
                         {
                             title: 'event4',
-                            start: '2018-06-25',
+                            start: '2018-07-25',
                         },
                         {
                             title: 'event5',
-                            start: '2018-06-25',
+                            start: '2018-07-25',
                         },
                         {
                             title: 'event6',
-                            start: '2018-06-25',
+                            start: '2018-07-25',
                         },
                         {
                             title: 'event7',
-                            start: '2018-06-25',
+                            start: '2018-07-25',
                         },
                         {
                             title: 'event8',
-                            start: '2018-06-25',
+                            start: '2018-07-25',
                         },
                         {
                             title: 'event9',
-                            start: '2018-06-25',
+                            start: '2018-07-25',
                         },
                         {
                             title: 'event10',
-                            start: '2018-06-25',
+                            start: '2018-07-25',
+                            end: '2018-08-25',
                         },
                     ],
                 },
@@ -147,7 +202,7 @@ class Calendar extends React.Component {
                     <Dialog
                         show={this.state.dialogShow}
                         onSubmit={() => {
-                            this.addEvent(this.state.title, this.state.start, this.state.end);
+                            this.addEvent(this.state.title, this.state.selected, this.state.start, this.state.end);
                             this.setState({ dialogShow: false });
                         }}
                         onClose={() => {
@@ -156,7 +211,12 @@ class Calendar extends React.Component {
                         handleChange={title => {
                             this.setState({ title });
                         }}
+                        handleSelect={selected => {
+                            this.setState({ selected });
+                        }}
+                        selectedValue={this.state.selected}
                         title={this.state.title}
+                        rangeSelection={this.state.rangeSelection}
                     />
                     , document.body)}
                 <div id={'calendar'}/>
