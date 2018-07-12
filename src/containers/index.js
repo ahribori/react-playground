@@ -6,6 +6,7 @@ import Rx from './Rx';
 import TUIEditor from './TUIEditor';
 import DecoratorTest from './DecoratorTest';
 import Zzalbang from './Zzalbang';
+import MaterialUI from './MaterialUI/MaterialUI';
 
 export {
     Home,
@@ -16,4 +17,5 @@ export {
     TUIEditor,
     DecoratorTest,
     Zzalbang,
+    MaterialUI,
 };

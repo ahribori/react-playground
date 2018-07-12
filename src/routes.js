@@ -13,6 +13,7 @@ import {
     TUIEditor,
     DecoratorTest,
     Zzalbang,
+    MaterialUI,
 } from './containers';
 
 
@@ -27,5 +28,6 @@ export default (
         <Route exact path="/decorator" component={DecoratorTest}/>
         <Route exact path="/decorator" component={DecoratorTest}/>
         <Route exact path="/zzalbang" component={Zzalbang}/>
+        <Route exact path="/mui" component={MaterialUI}/>
     </Switch>
 );
