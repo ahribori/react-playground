@@ -133,6 +133,20 @@ class Calendar extends React.Component {
                     });
                 }
             },
+            navLinks: true,
+            navLinkDayClick: (date, jsEvent) => {
+                $calendar.fullCalendar('clientEvents', function (event) {
+                    if (!event.end) {
+                        if (date <= event.start && moment(date).add(1, 'd') > event.start) {
+                            console.log(event);
+                        }
+                    } else {
+                        if (date >= event.start && date < event.end) {
+                            console.log(event);
+                        }
+                    }
+                });
+            },
             eventSources: [
                 {
                     color: 'blue',
