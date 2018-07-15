@@ -6,7 +6,75 @@ import moment from 'moment';
 import 'fullcalendar';
 import 'fullcalendar/dist/fullcalendar.min.css';
 
-const Dialog = styled(({ className, title, show, onSubmit, onClose, handleChange, handleSelect, selectedValue, rangeSelection }) => (
+const vacations = {
+    'daniel.hs': [
+        {
+            title: 'daniel.hs',
+            start: '2018-07-08',
+            type: 'a',
+        },
+        {
+            title: 'daniel.hs',
+            start: '2018-07-09',
+            type: 'a',
+        },
+        {
+            title: 'daniel.hs',
+            start: '2018-07-10',
+            type: 'a',
+        },
+        {
+            title: 'daniel.hs',
+            start: '2018-07-11',
+            type: 'a',
+        },
+    ],
+    'derek.c': [
+        {
+            title: 'derek.c',
+            start: '2018-07-18',
+            type: 'a',
+        },
+        {
+            title: 'derek.c',
+            start: '2018-07-19',
+            type: 'b',
+        },
+        {
+            title: 'derek.c',
+            start: '2018-07-20',
+            type: 'a',
+        },
+    ],
+};
+
+let events = [];
+
+const buildEvents = () => {
+    Object.keys(vacations).forEach(key => {
+        const myVacation = vacations[key];
+        const myNewVacation = [];
+        let prev = null;
+        for (let i = 0, length = myVacation.length; i < length; i++) {
+            if (!prev) {
+                myNewVacation.push(myVacation[i])
+            } else {
+                if (new Date(myVacation[i].start) - new Date(prev.start) === 86400000) {
+                    myNewVacation[myNewVacation.length - 1].end = moment(myVacation[i].start).add(9, 'hours');
+                }
+            }
+            prev = myVacation[i];
+        }
+        vacations[key] = myNewVacation;
+        events = events.concat(myNewVacation);
+    });
+    console.log(events)
+};
+
+buildEvents();
+
+
+const Dialog = styled(({className, title, show, onSubmit, onClose, handleChange, handleSelect, selectedValue, rangeSelection}) => (
     <div className={className}>
         <div className="dialog">
             <input
@@ -151,59 +219,8 @@ class Calendar extends React.Component {
                 {
                     color: 'blue',
                     textColor: 'yellow',
-                    events: [
-                        {
-                            title: 'event1',
-                            start: '2018-07-09',
-                        },
-                        {
-                            title: 'event2',
-                            start: '2018-07-11',
-                            end: '2018-07-15',
-                        },
-                        {
-                            title: 'event3',
-                            start: '2018-07-19T12:30:00',
-                            allDay: false, // will make the time show
-                        },
-                    ],
+                    events: events,
                 },
-                {
-                    color: 'red',
-                    textColor: 'white',
-                    events: [
-                        {
-                            title: 'event4',
-                            start: '2018-07-25',
-                        },
-                        {
-                            title: 'event5',
-                            start: '2018-07-25',
-                        },
-                        {
-                            title: 'event6',
-                            start: '2018-07-25',
-                        },
-                        {
-                            title: 'event7',
-                            start: '2018-07-25',
-                        },
-                        {
-                            title: 'event8',
-                            start: '2018-07-25',
-                        },
-                        {
-                            title: 'event9',
-                            start: '2018-07-25',
-                        },
-                        {
-                            title: 'event10',
-                            start: '2018-07-25',
-                            end: '2018-08-25',
-                        },
-                    ],
-                },
-
             ],
         });
 
@@ -217,16 +234,16 @@ class Calendar extends React.Component {
                         show={this.state.dialogShow}
                         onSubmit={() => {
                             this.addEvent(this.state.title, this.state.selected, this.state.start, this.state.end);
-                            this.setState({ dialogShow: false });
+                            this.setState({dialogShow: false});
                         }}
                         onClose={() => {
-                            this.setState({ dialogShow: false });
+                            this.setState({dialogShow: false});
                         }}
                         handleChange={title => {
-                            this.setState({ title });
+                            this.setState({title});
                         }}
                         handleSelect={selected => {
-                            this.setState({ selected });
+                            this.setState({selected});
                         }}
                         selectedValue={this.state.selected}
                         title={this.state.title}
