@@ -20,6 +20,7 @@ class App extends React.Component {
             <li><Link to={'/decorator'}>Decorator Test</Link></li>
             <li><Link to={'/zzalbang'}>Zzalbang</Link></li>
             <li><Link to={'/mui'}>MaterialUI</Link></li>
+            <li><Link to={'/reselect'}>Reselect Example</Link></li>
         </ul>
     );
 

@@ -14,6 +14,7 @@ import {
     DecoratorTest,
     Zzalbang,
     MaterialUI,
+    ReselectExample,
 } from './containers';
 
 
@@ -29,5 +30,6 @@ export default (
         <Route exact path="/decorator" component={DecoratorTest}/>
         <Route exact path="/zzalbang" component={Zzalbang}/>
         <Route exact path="/mui" component={MaterialUI}/>
+        <Route exact path="/reselect" component={ReselectExample}/>
     </Switch>
 );
