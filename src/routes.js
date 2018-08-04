@@ -15,6 +15,7 @@ import {
     Zzalbang,
     MaterialUI,
     ReselectExample,
+    MobX,
 } from './containers';
 
 
@@ -31,5 +32,6 @@ export default (
         <Route exact path="/zzalbang" component={Zzalbang}/>
         <Route exact path="/mui" component={MaterialUI}/>
         <Route exact path="/reselect" component={ReselectExample}/>
+        <Route exact path="/mobx" component={MobX}/>
     </Switch>
 );

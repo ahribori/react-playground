@@ -8,6 +8,7 @@ import DecoratorTest from './DecoratorTest';
 import Zzalbang from './Zzalbang';
 import MaterialUI from './MaterialUI/MaterialUI';
 import ReselectExample from './ReselectExample';
+import MobX from './MobX'
 
 export {
     Home,
@@ -20,4 +21,5 @@ export {
     Zzalbang,
     MaterialUI,
     ReselectExample,
+    MobX
 };
