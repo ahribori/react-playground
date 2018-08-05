@@ -1,27 +1,75 @@
 import React, { Component } from 'react';
-import { observable } from 'mobx';
+import { observable, computed } from 'mobx';
 import { observer } from 'mobx-react';
+
+let renderCount = 0;
 
 class CounterStore {
     @observable count = 0;
+
+    @computed get computedCount() {
+        return `카운트: ${this.count}`;
+    }
 }
 
-const store = new CounterStore();
+class DataStore {
+    @observable arr = [];
+    @observable obj = {
+        hello: 'world',
+        a: {
+            b: {
+                c: 'foo',
+                d: 'bar',
+            },
+        },
+    };
+}
+
+const counterStore = new CounterStore();
+const dataStore = new DataStore();
 
 @observer
 class MobX extends Component {
+
+    fetch = () => {
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        console.log(possible[Math.floor(Math.random() * possible.length)])
+        setTimeout(() => {
+            dataStore.arr.push(possible[Math.floor(Math.random() * possible.length)]);
+        }, 1000);
+    };
+
+    mutateObject = () => {
+        dataStore.obj.a.b.c = 'world';
+    };
+
     render() {
+        renderCount++;
         return (
             <div>
-                <button
-                    onClick={() => store.count--}>
-                    -
-                </button>
-                {store.count}
-                <button
-                    onClick={() => store.count++}>
-                    +
-                </button>
+                <h1>렌더링 횟수: {renderCount}</h1>
+                <div>
+                    <h3>Counter</h3>
+                    <button
+                        onClick={() => counterStore.count--}>
+                        -
+                    </button>
+                    {counterStore.computedCount}
+                    <button
+                        onClick={() => counterStore.count++}>
+                        +
+                    </button>
+                </div>
+                <div>
+                    <h3>Async</h3>
+                    <p>{dataStore.arr}</p>
+                    <button onClick={this.fetch}>Fetch data async</button>
+                </div>
+                <div>
+                    <h3>Observe Object</h3>
+                    <pre><code>{JSON.stringify(dataStore.obj, null, 2)}</code></pre>
+                    <button onClick={this.mutateObject}>Mutate object</button>
+                </div>
             </div>
         );
     }
