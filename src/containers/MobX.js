@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observable, computed } from 'mobx';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 
 let renderCount = 0;
 
@@ -28,11 +28,12 @@ class DataStore {
 const counterStore = new CounterStore();
 const dataStore = new DataStore();
 
+@inject('todoStore')
 @observer
 class MobX extends Component {
 
     fetch = () => {
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         console.log(possible[Math.floor(Math.random() * possible.length)])
         setTimeout(() => {
             dataStore.arr.push(possible[Math.floor(Math.random() * possible.length)]);
@@ -69,6 +70,16 @@ class MobX extends Component {
                     <h3>Observe Object</h3>
                     <pre><code>{JSON.stringify(dataStore.obj, null, 2)}</code></pre>
                     <button onClick={this.mutateObject}>Mutate object</button>
+                </div>
+                <div>
+                    <h3>TODO Store</h3>
+                    <div>
+                        size: {this.props.todoStore.size}
+                    </div>
+                    <button onClick={() => {
+                        this.props.todoStore.addTodo('ㅋㅋㅋ');
+                    }}>Add Todo
+                    </button>
                 </div>
             </div>
         );

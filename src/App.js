@@ -6,6 +6,8 @@ import {
 } from 'react-router-dom';
 import styled from 'styled-components';
 import routes from './routes';
+import { todoStore } from './mobx_store';
+import { Provider } from 'mobx-react';
 
 class App extends React.Component {
 
@@ -27,12 +29,16 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className={this.props.className}>
-                {this.renderMenu()}
-                <div className={'routes'}>
-                    {routes}
+            <Provider
+                todoStore={todoStore}
+            >
+                <div className={this.props.className}>
+                    {this.renderMenu()}
+                    <div className={'routes'}>
+                        {routes}
+                    </div>
                 </div>
-            </div>
+            </Provider>
         );
     }
 }
