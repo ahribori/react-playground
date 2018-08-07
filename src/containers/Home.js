@@ -1,15 +1,19 @@
 import React from 'react';
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+    }
 
-  render() {
-    return (
-        <div>Home</div>
-    )
-  }
+    render() {
+        return (
+            <div>
+                <h1>HOME</h1>
+                <h3>NODE_ENV</h3>
+                <p>{process.env.NODE_ENV}</p>
+            </div>
+        )
+    }
 
 }
 
