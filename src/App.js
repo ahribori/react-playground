@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import routes from './routes';
 import { todoStore } from './mobx_store';
 import { Provider } from 'mobx-react';
+import DevTools from 'mobx-react-devtools';
 
 class App extends React.Component {
 
@@ -33,6 +34,7 @@ class App extends React.Component {
                 todoStore={todoStore}
             >
                 <div className={this.props.className}>
+                    <DevTools/>
                     {this.renderMenu()}
                     <div className={'routes'}>
                         {routes}

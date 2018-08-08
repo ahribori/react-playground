@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observable, computed } from 'mobx';
 import { observer, inject } from 'mobx-react';
+import { InjectStore } from '../components/ReduxInjector';
 
 let renderCount = 0;
 
@@ -28,12 +29,19 @@ class DataStore {
 const counterStore = new CounterStore();
 const dataStore = new DataStore();
 
+const mapDispatchToProps = dispatch => {
+    return {
+        testFunction: () => dispatch(()=>{})
+    }
+};
+
+@InjectStore(['example'], mapDispatchToProps)
 @inject('todoStore')
 @observer
 class MobX extends Component {
 
     fetch = () => {
-        var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         console.log(possible[Math.floor(Math.random() * possible.length)])
         setTimeout(() => {
             dataStore.arr.push(possible[Math.floor(Math.random() * possible.length)]);
@@ -84,6 +92,11 @@ class MobX extends Component {
             </div>
         );
     }
+
+    componentDidMount() {
+        console.log(this.props)
+    }
 }
+
 
 export default MobX;
