@@ -9,6 +9,7 @@ import Zzalbang from './Zzalbang';
 import MaterialUI from './MaterialUI/MaterialUI';
 import ReselectExample from './ReselectExample';
 import MobX from './MobX'
+import VideoJs from './VideoJs';
 
 export {
     Home,
@@ -21,5 +22,6 @@ export {
     Zzalbang,
     MaterialUI,
     ReselectExample,
-    MobX
+    MobX,
+    VideoJs,
 };

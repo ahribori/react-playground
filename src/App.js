@@ -25,6 +25,7 @@ class App extends React.Component {
             <li><Link to={'/mui'}>MaterialUI</Link></li>
             <li><Link to={'/reselect'}>Reselect Example</Link></li>
             <li><Link to={'/mobx'}>MobX</Link></li>
+            <li><Link to={'/videojs'}>VideoJs</Link></li>
         </ul>
     );
 

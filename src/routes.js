@@ -16,6 +16,7 @@ import {
     MaterialUI,
     ReselectExample,
     MobX,
+    VideoJs
 } from './containers';
 
 
@@ -33,5 +34,6 @@ export default (
         <Route exact path="/mui" component={MaterialUI}/>
         <Route exact path="/reselect" component={ReselectExample}/>
         <Route exact path="/mobx" component={MobX}/>
+        <Route exact path="/videojs" component={VideoJs}/>
     </Switch>
 );
