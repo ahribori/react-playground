@@ -10,6 +10,7 @@ import MaterialUI from './MaterialUI/MaterialUI';
 import ReselectExample from './ReselectExample';
 import MobX from './MobX'
 import VideoJs from './VideoJs';
+import ReactImages from './ReactImages'
 
 export {
     Home,
@@ -24,4 +25,5 @@ export {
     ReselectExample,
     MobX,
     VideoJs,
+    ReactImages,
 };
