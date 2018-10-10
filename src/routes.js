@@ -18,6 +18,7 @@ import {
     MobX,
     VideoJs,
     ReactImages,
+    NotificationExample,
 } from './containers';
 
 
@@ -37,5 +38,6 @@ export default (
         <Route exact path="/mobx" component={MobX}/>
         <Route exact path="/videojs" component={VideoJs}/>
         <Route exact path="/react_images" component={ReactImages}/>
+        <Route exact path="/notification_example" component={NotificationExample}/>
     </Switch>
 );

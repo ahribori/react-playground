@@ -11,6 +11,7 @@ import ReselectExample from './ReselectExample';
 import MobX from './MobX'
 import VideoJs from './VideoJs';
 import ReactImages from './ReactImages'
+import NotificationExample from './NotificationExample';
 
 export {
     Home,
@@ -26,4 +27,5 @@ export {
     MobX,
     VideoJs,
     ReactImages,
+    NotificationExample,
 };
