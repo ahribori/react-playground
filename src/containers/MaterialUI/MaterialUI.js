@@ -9,10 +9,6 @@ const style = {
 
 @withStyles(style)
 class MaterialUI extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const { classes } = this.props;
         return (

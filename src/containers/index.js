@@ -8,10 +8,11 @@ import DecoratorTest from './DecoratorTest';
 import Zzalbang from './Zzalbang';
 import MaterialUI from './MaterialUI/MaterialUI';
 import ReselectExample from './ReselectExample';
-import MobX from './MobX'
+import MobX from './MobX';
 import VideoJs from './VideoJs';
-import ReactImages from './ReactImages'
+import ReactImages from './ReactImages';
 import NotificationExample from './NotificationExample';
+import JSS from './JSS';
 
 export {
     Home,
@@ -28,4 +29,5 @@ export {
     VideoJs,
     ReactImages,
     NotificationExample,
+    JSS,
 };

@@ -149,7 +149,7 @@ class GoogleSheet extends React.Component {
             ];
             this.state.data.forEach(row => {
                 const account = row[0];
-                const name = row[1];
+                // const name = row[1];
                 const remainder = row[2];
                 const vacationType = row[3];
                 const event = {

@@ -68,7 +68,7 @@ const buildEvents = () => {
         vacations[key] = myNewVacation;
         events = events.concat(myNewVacation);
     });
-    console.log(events)
+    // console.log(events)
 };
 
 buildEvents();

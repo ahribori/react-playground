@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { observable, computed } from 'mobx';
-import { observer, inject } from 'mobx-react';
+import { computed, observable } from 'mobx';
+import { inject, observer } from 'mobx-react';
 import { InjectStore } from '../components/ReduxInjector';
 
 let renderCount = 0;

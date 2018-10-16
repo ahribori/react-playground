@@ -1,9 +1,6 @@
 import './App.css';
 import React from 'react';
-import {
-    withRouter,
-    Link,
-} from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import routes from './routes';
 import { todoStore } from './mobx_store';
@@ -28,6 +25,7 @@ class App extends React.Component {
             <li><Link to={'/videojs'}>VideoJs</Link></li>
             <li><Link to={'/react_images'}>React Images</Link></li>
             <li><Link to={'/notification_example'}>Notification Examples</Link></li>
+            <li><Link to={'/jss'}>JSS</Link></li>
         </ul>
     );
 

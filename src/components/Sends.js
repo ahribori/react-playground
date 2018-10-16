@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { SampleConsumer } from '../contexts/SampleContext';
 
 class Sends extends Component {
 

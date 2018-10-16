@@ -1,6 +1,5 @@
 import React from 'react';
-import {Observable, Subject, ReplaySubject, from, fromEvent, of, range} from 'rxjs';
-import {map, filter, switchMap} from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 class Rx extends React.Component {
     constructor(props) {

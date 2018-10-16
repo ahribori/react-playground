@@ -6,24 +6,21 @@ import React from 'react';
 import Editor from 'tui-editor';
 
 class TUIEditor extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
-  componentDidMount() {
-      const editor = new Editor({
-          el: document.getElementById('editor'),
-          initialEditType: 'markdown',
-          previewStyle: 'vertical',
-          width: '100%',
-      })
-  }
+    componentDidMount() {
+        new Editor({
+            el: document.getElementById('editor'),
+            initialEditType: 'markdown',
+            previewStyle: 'vertical',
+            width: '100%',
+        });
+    }
 
-  render() {
-    return (
-        <div id="editor" />
-    )
-  }
+    render() {
+        return (
+            <div id="editor"/>
+        );
+    }
 }
 
 export default TUIEditor;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
-import { setMessage, addNumber, addNumberList } from '../store/Example';
+import { addNumber, addNumberList, setMessage } from '../store/Example';
 
 class ReselectExample extends React.Component {
 
