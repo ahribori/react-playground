@@ -13,6 +13,7 @@ import VideoJs from './VideoJs';
 import ReactImages from './ReactImages';
 import NotificationExample from './NotificationExample';
 import JSS from './JSS';
+import ParticlesExample from './ParticlesExample';
 
 export {
     Home,
@@ -30,4 +31,5 @@ export {
     ReactImages,
     NotificationExample,
     JSS,
+    ParticlesExample
 };

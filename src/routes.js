@@ -17,6 +17,7 @@ import {
     TUIEditor,
     VideoJs,
     Zzalbang,
+    ParticlesExample
 } from './containers';
 
 
@@ -37,6 +38,7 @@ export default (
         <Route exact path="/videojs" component={VideoJs}/>
         <Route exact path="/react_images" component={ReactImages}/>
         <Route exact path="/notification_example" component={NotificationExample}/>
+        <Route exact path="/particles_example" component={ParticlesExample}/>
         <Route exact path="/jss" component={JSS}/>
     </Switch>
 );

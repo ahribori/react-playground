@@ -26,6 +26,7 @@ class App extends React.Component {
             <li><Link to={'/react_images'}>React Images</Link></li>
             <li><Link to={'/notification_example'}>Notification Examples</Link></li>
             <li><Link to={'/jss'}>JSS</Link></li>
+            <li><Link to={'/particles_example'}>Particles.js</Link></li>
         </ul>
     );
 
