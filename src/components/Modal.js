@@ -40,20 +40,68 @@ const styles = {
 };
 
 class Modal extends Component {
+    state = {
+        show: false,
+        header: 'Header',
+        body: 'Body',
+        onConfirm: null,
+        onCancel: null,
+    };
+
+    open = (options) => {
+        this.setState({
+            show: true,
+            header: options.header || 'Header',
+            body: options.body || 'Body',
+            onConfirm: options.onConfirm || (() => {}),
+            onCancel: options.onCancel || (() => {}),
+        })
+    };
+
+    confirm = () => {
+        const { onConfirm } = this.state;
+
+        this.setState({
+            show: false,
+        });
+        onConfirm();
+    };
+
+    cancel = () => {
+        const { onCancel } = this.state;
+
+        this.setState({
+            show: false,
+        });
+        onCancel();
+    };
 
     render() {
+        const {
+            header,
+            body,
+        } = this.state;
+
+        const {
+            show
+        } = this.state;
+
+        if (!show) {
+            return null;
+        }
+
         return (
             <div style={styles.background}>
                 <div style={styles.modal}>
                     <div style={styles.header}>
-                        <h3>Header</h3>
+                        <h3>{header}</h3>
                     </div>
                     <div style={styles.body}>
-                        Body
+                        {body}
                     </div>
                     <div style={styles.action}>
-                        <button style={styles.button}>확인</button>
-                        <button style={styles.button}>취소</button>
+                        <button style={styles.button} onClick={this.confirm}>확인</button>
+                        <button style={styles.button} onClick={this.cancel}>취소</button>
                     </div>
                 </div>
             </div>
