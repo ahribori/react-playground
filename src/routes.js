@@ -17,7 +17,8 @@ import {
     TUIEditor,
     VideoJs,
     Zzalbang,
-    ParticlesExample
+    ParticlesExample,
+    ModalExample
 } from './containers';
 
 
@@ -40,5 +41,6 @@ export default (
         <Route exact path="/notification_example" component={NotificationExample}/>
         <Route exact path="/particles_example" component={ParticlesExample}/>
         <Route exact path="/jss" component={JSS}/>
+        <Route exact path="/modal_example" component={ModalExample}/>
     </Switch>
 );

@@ -27,6 +27,7 @@ class App extends React.Component {
             <li><Link to={'/notification_example'}>Notification Examples</Link></li>
             <li><Link to={'/jss'}>JSS</Link></li>
             <li><Link to={'/particles_example'}>Particles.js</Link></li>
+            <li><Link to={'/modal_example'}>Modal</Link></li>
         </ul>
     );
 

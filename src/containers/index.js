@@ -14,6 +14,7 @@ import ReactImages from './ReactImages';
 import NotificationExample from './NotificationExample';
 import JSS from './JSS';
 import ParticlesExample from './ParticlesExample';
+import ModalExample from './ModalExample';
 
 export {
     Home,
@@ -31,5 +32,6 @@ export {
     ReactImages,
     NotificationExample,
     JSS,
-    ParticlesExample
+    ParticlesExample,
+    ModalExample,
 };
