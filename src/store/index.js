@@ -1,9 +1,11 @@
 import { combineReducers, createStore } from 'redux';
 
 import example from './Example';
+import modal from './Modal';
 
 const appReducer = combineReducers({
     example,
+    modal,
 });
 
 const rootReducer = (state, action) => {
