@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { computed, observable } from 'mobx';
 import { inject, observer } from 'mobx-react';
+import { createViewModel } from 'mobx-utils';
 import { InjectStore } from '../components/ReduxInjector';
 
 let renderCount = 0;
@@ -27,7 +28,9 @@ class DataStore {
 }
 
 const counterStore = new CounterStore();
+const counterViewModel = createViewModel(counterStore);
 const dataStore = new DataStore();
+
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -60,14 +63,17 @@ class MobX extends Component {
                 <div>
                     <h3>Counter</h3>
                     <button
-                        onClick={() => counterStore.count--}>
+                        onClick={() => counterViewModel.count--}>
                         -
                     </button>
-                    {counterStore.computedCount}
+                    {counterViewModel.computedCount}
                     <button
-                        onClick={() => counterStore.count++}>
+                        onClick={() => counterViewModel.count++}>
                         +
                     </button>
+                    <p>
+                        counter vm isDirty: {counterViewModel.isDirty.toString()}
+                    </p>
                 </div>
                 <div>
                     <h3>Async</h3>
@@ -91,10 +97,6 @@ class MobX extends Component {
                 </div>
             </div>
         );
-    }
-
-    componentDidMount() {
-        console.log(this.props)
     }
 }
 
