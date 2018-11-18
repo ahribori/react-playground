@@ -1,5 +1,6 @@
 import React from 'react';
-import { Subject } from 'rxjs';
+import { Subject, timer } from 'rxjs';
+import { debounce } from 'rxjs/operators';
 
 class Rx extends React.Component {
     constructor(props) {
@@ -20,7 +21,9 @@ class Rx extends React.Component {
     }
 
     componentDidMount() {
-        this.text$.subscribe(text => this.setState({text}));
+        this.text$.pipe(
+            debounce(() => timer(200))
+        ).subscribe(text => this.setState({text}));
     }
 }
 
