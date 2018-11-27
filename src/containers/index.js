@@ -15,6 +15,7 @@ import NotificationExample from './NotificationExample';
 import JSS from './JSS';
 import ParticlesExample from './ParticlesExample';
 import ModalExample from './ModalExample';
+import SlickExample from './SlickExample';
 
 export {
     Home,
@@ -34,4 +35,5 @@ export {
     JSS,
     ParticlesExample,
     ModalExample,
+    SlickExample,
 };

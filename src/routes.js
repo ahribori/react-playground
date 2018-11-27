@@ -18,7 +18,8 @@ import {
     VideoJs,
     Zzalbang,
     ParticlesExample,
-    ModalExample
+    ModalExample,
+    SlickExample,
 } from './containers';
 
 
@@ -42,5 +43,6 @@ export default (
         <Route exact path="/particles_example" component={ParticlesExample}/>
         <Route exact path="/jss" component={JSS}/>
         <Route exact path="/modal_example" component={ModalExample}/>
+        <Route exact path="/slick_example" component={SlickExample}/>
     </Switch>
 );
