@@ -16,6 +16,7 @@ import JSS from './JSS';
 import ParticlesExample from './ParticlesExample';
 import ModalExample from './ModalExample';
 import SlickExample from './SlickExample';
+import FormikExample from './FormikExample';
 
 export {
     Home,
@@ -36,4 +37,5 @@ export {
     ParticlesExample,
     ModalExample,
     SlickExample,
+    FormikExample,
 };
