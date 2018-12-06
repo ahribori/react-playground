@@ -21,6 +21,7 @@ import {
     ModalExample,
     SlickExample,
     FormikExample,
+    ReactHooks
 } from './containers';
 
 
@@ -46,5 +47,6 @@ export default (
         <Route exact path="/modal_example" component={ModalExample}/>
         <Route exact path="/slick_example" component={SlickExample}/>
         <Route exact path="/formik_example" component={FormikExample}/>
+        <Route exact path="/react_hooks" component={ReactHooks}/>
     </Switch>
 );

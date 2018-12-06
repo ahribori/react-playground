@@ -17,6 +17,7 @@ import ParticlesExample from './ParticlesExample';
 import ModalExample from './ModalExample';
 import SlickExample from './SlickExample';
 import FormikExample from './FormikExample';
+import ReactHooks from './ReactHooks';
 
 export {
     Home,
@@ -38,4 +39,5 @@ export {
     ModalExample,
     SlickExample,
     FormikExample,
+    ReactHooks,
 };
