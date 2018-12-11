@@ -6,9 +6,6 @@ class FormikExample extends Component {
     const { name, value } = e.target;
 
     // Formik form 내부로 input event가 전파되기 전 처리
-    if (name === 'allAgree') {
-      console.log('kk');
-    }
 
     next(e);
   };
