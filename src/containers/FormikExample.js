@@ -6,6 +6,9 @@ class FormikExample extends Component {
     const { name, value } = e.target;
 
     // Formik form 내부로 input event가 전파되기 전 처리
+    if (name === 'allAgree') {
+      console.log('kk');
+    }
 
     next(e);
   };
@@ -69,7 +72,15 @@ class FormikExample extends Component {
     return (
       <div>
         <Formik
-          initialValues={{ email: '', name: '', age: '' }}
+          initialValues={{
+            email: '',
+            name: '',
+            age: '',
+            allAgree: false,
+            agree1: false,
+            agree2: false,
+            agree3: false,
+          }}
           validate={this.formLevelValidate}
           render={props => (
             <form action="">
@@ -108,6 +119,56 @@ class FormikExample extends Component {
                   validate={this.validateAge}
                 />
                 <ErrorMessage name="age" />
+              </div>
+              <div>
+                <label htmlFor="agree">모두 동의</label>
+                <Field
+                  type="checkbox"
+                  name="allAgree"
+                  checked={
+                    props.values.agree1 &&
+                    props.values.agree2 &&
+                    props.values.agree3
+                  }
+                  onChange={() => {
+                    const { values, setValues } = props;
+                    const { agree1, agree2, agree3 } = values;
+                    if (agree1 || agree2 || agree3) {
+                      values.agree1 = false;
+                      values.agree2 = false;
+                      values.agree3 = false;
+                    } else {
+                      values.agree1 = true;
+                      values.agree2 = true;
+                      values.agree3 = true;
+                    }
+                    setValues(values);
+                  }}
+                />
+              </div>
+              <div>
+                <label htmlFor="agree">동의1</label>
+                <Field
+                  type="checkbox"
+                  name="agree1"
+                  checked={props.values.agree1}
+                />
+              </div>
+              <div>
+                <label htmlFor="agree">동의2</label>
+                <Field
+                  type="checkbox"
+                  name="agree2"
+                  checked={props.values.agree2}
+                />
+              </div>
+              <div>
+                <label htmlFor="agree">동의3</label>
+                <Field
+                  type="checkbox"
+                  name="agree3"
+                  checked={props.values.agree3}
+                />
               </div>
               <button onClick={this.handleSubmit(props)} type="button">
                 submit
