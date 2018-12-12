@@ -77,6 +77,7 @@ class FormikExample extends Component {
             agree1: false,
             agree2: false,
             agree3: false,
+            color: 'red',
           }}
           validate={this.formLevelValidate}
           render={props => (
@@ -144,7 +145,7 @@ class FormikExample extends Component {
                 />
               </div>
               <div>
-                <label htmlFor="agree">동의1</label>
+                <label htmlFor="agree1">동의1</label>
                 <Field
                   type="checkbox"
                   name="agree1"
@@ -152,7 +153,7 @@ class FormikExample extends Component {
                 />
               </div>
               <div>
-                <label htmlFor="agree">동의2</label>
+                <label htmlFor="agree2">동의2</label>
                 <Field
                   type="checkbox"
                   name="agree2"
@@ -160,12 +161,45 @@ class FormikExample extends Component {
                 />
               </div>
               <div>
-                <label htmlFor="agree">동의3</label>
+                <label htmlFor="agree3">동의3</label>
                 <Field
                   type="checkbox"
                   name="agree3"
                   checked={props.values.agree3}
                 />
+              </div>
+              <div>
+                <Field component="select" name="color">
+                  <option value="red">Red</option>
+                  <option value="green">Green</option>
+                  <option value="blue">Blue</option>
+                </Field>
+              </div>
+              <div>
+                <Field
+                  type="radio"
+                  name="color"
+                  value='red'
+                  id="radio_color_red"
+                  checked={props.values.color === 'red'}
+                />
+                <label htmlFor="radio_color_red">red</label>
+                <Field
+                  type="radio"
+                  name="color"
+                  value='green'
+                  id="radio_color_green"
+                  checked={props.values.color === 'green'}
+                />
+                <label htmlFor="radio_color_green">green</label>
+                <Field
+                  type="radio"
+                  name="color"
+                  value='blue'
+                  id="radio_color_blue"
+                  checked={props.values.color === 'blue'}
+                />
+                <label htmlFor="radio_color_blue">blue</label>
               </div>
               <button onClick={this.handleSubmit(props)} type="button">
                 submit
