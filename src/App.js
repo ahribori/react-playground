@@ -32,6 +32,7 @@ class App extends React.Component {
             <li><Link to={'/formik_example'}>Formik example</Link></li>
             <li><Link to={'/react_hooks'}>React Hooks</Link></li>
             <li><Link to={'/image_crop'}>Image crop</Link></li>
+            <li><Link to={'/react_dnd'}>ReactDnD</Link></li>
         </ul>
     );
 

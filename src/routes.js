@@ -23,6 +23,7 @@ import {
   FormikExample,
   ReactHooks,
   ImageCrop,
+  ReactDnD,
 } from './containers';
 
 export default (
@@ -49,5 +50,6 @@ export default (
     <Route exact path="/formik_example" component={FormikExample} />
     <Route exact path="/react_hooks" component={ReactHooks} />
     <Route exact path="/image_crop" component={ImageCrop} />
+    <Route exact path="/react_dnd" component={ReactDnD} />
   </Switch>
 );

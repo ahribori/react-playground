@@ -19,6 +19,7 @@ import SlickExample from './SlickExample';
 import FormikExample from './FormikExample';
 import ReactHooks from './ReactHooks';
 import ImageCrop from './ImageCrop';
+import ReactDnD from './ReactDnD';
 
 export {
   Home,
@@ -42,4 +43,5 @@ export {
   FormikExample,
   ReactHooks,
   ImageCrop,
+  ReactDnD,
 };
