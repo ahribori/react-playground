@@ -49,6 +49,7 @@
     "react": "^16.7.0-alpha.2",
     "react-dev-utils": "^5.0.1",
     "react-dnd": "^7.0.2",
+    "react-dnd-html5-backend": "^7.0.2",
     "react-dom": "^16.7.0-alpha.2",
     "react-image": "^1.4.1",
     "react-jss": "^8.6.1",
