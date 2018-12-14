@@ -6,11 +6,13 @@ const Types = {
 };
 const itemSource = {
   beginDrag(props) {
+    console.log('beginDrag')
     return {
       id: props.id
     }
   },
   endDrag(props) {
+    console.log('endDrag')
     console.log(props)
     /* code here */
   },
