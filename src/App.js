@@ -33,6 +33,7 @@ class App extends React.Component {
             <li><Link to={'/react_hooks'}>React Hooks</Link></li>
             <li><Link to={'/image_crop'}>Image crop</Link></li>
             <li><Link to={'/react_dnd'}>ReactDnD</Link></li>
+            <li><Link to={'/react_sortable'}>React Sortable</Link></li>
         </ul>
     );
 

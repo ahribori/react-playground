@@ -20,6 +20,7 @@ import FormikExample from './FormikExample';
 import ReactHooks from './ReactHooks';
 import ImageCrop from './ImageCrop';
 import ReactDnD from './ReactDnD';
+import ReactSortable from './ReactSortable';
 
 export {
   Home,
@@ -44,4 +45,5 @@ export {
   ReactHooks,
   ImageCrop,
   ReactDnD,
+  ReactSortable,
 };
