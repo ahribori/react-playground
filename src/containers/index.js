@@ -19,8 +19,8 @@ import SlickExample from './SlickExample';
 import FormikExample from './FormikExample';
 import ReactHooks from './ReactHooks';
 import ImageCrop from './ImageCrop';
-import ReactDnD from './ReactDnD';
-import ReactSortable from './ReactSortable';
+import ReactDnD from './ReactDnD/ReactDnD';
+import ReactSortable from './ReactDnD/ReactSortable';
 
 export {
   Home,
