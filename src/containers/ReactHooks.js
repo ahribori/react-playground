@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 
-const Counter = ({}) => {
+const Counter = () => {
   const [value /* 값 */, setValue /* 값을 변화시킬 수 있는 setter */] = useState(0 /* 초기값 */);
 
   return (

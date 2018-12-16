@@ -3,8 +3,6 @@ import { Formik, Field, ErrorMessage } from 'formik';
 
 class FormikExample extends Component {
   userInputHooks = next => e => {
-    const { name, value } = e.target;
-
     // Formik form 내부로 input event가 전파되기 전 처리
 
     next(e);
@@ -13,7 +11,7 @@ class FormikExample extends Component {
   formLevelValidate = values => {
     const errors = {};
     console.log(values);
-    const { email, name, age } = values;
+    const { name } = values;
     if (name.length > 10) {
       errors.name = '열 자 이상 입력 불가';
     }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HTML5Backend from 'react-dnd-html5-backend';
-import { DragDropContext, DragSource, DropTarget, DragLayer } from 'react-dnd';
+import { DragDropContext, DragSource, DropTarget } from 'react-dnd';
 
 const typeCard = '@@Type::Card';
 
@@ -32,49 +32,50 @@ const Card = props => {
   );
 };
 
-const CustomDragLayer = ({ item, itemType, isDragging, ...props }) => {
-  const layerStyles = {
-    position: 'fixed',
-    pointerEvents: 'none',
-    zIndex: 100,
-    left: 0,
-    top: 0,
-    width: '100%',
-    height: '100%',
-  };
-
-  function getItemStyles(props) {
-    const { currentOffset } = props;
-    if (!currentOffset) {
-      return {
-        display: 'none',
-      };
-    }
-
-    const { x, y } = currentOffset;
-    const transform = `translate(${x}px, ${y}px)`;
-    return {
-      transform: transform,
-      WebkitTransform: transform,
-    };
-  }
-
-  if (!isDragging) {
-    return null;
-  }
-
-  function renderItem(type, item) {
-    switch (type) {
-      case typeCard:
-        return <div>프리뷰!</div>;
-    }
-  }
-  return (
-    <div style={layerStyles}>
-      <div style={getItemStyles(props)}>{renderItem(itemType, item)}</div>
-    </div>
-  );
-};
+// const CustomDragLayer = ({ item, itemType, isDragging, ...props }) => {
+//   const layerStyles = {
+//     position: 'fixed',
+//     pointerEvents: 'none',
+//     zIndex: 100,
+//     left: 0,
+//     top: 0,
+//     width: '100%',
+//     height: '100%',
+//   };
+//
+//   function getItemStyles(props) {
+//     const { currentOffset } = props;
+//     if (!currentOffset) {
+//       return {
+//         display: 'none',
+//       };
+//     }
+//
+//     const { x, y } = currentOffset;
+//     const transform = `translate(${x}px, ${y}px)`;
+//     return {
+//       transform: transform,
+//       WebkitTransform: transform,
+//     };
+//   }
+//
+//   if (!isDragging) {
+//     return null;
+//   }
+//
+//   function renderItem(type, item) {
+//     switch (type) {
+//       case typeCard:
+//         return <div>프리뷰!</div>;
+//       default:
+//     }
+//   }
+//   return (
+//     <div style={layerStyles}>
+//       <div style={getItemStyles(props)}>{renderItem(itemType, item)}</div>
+//     </div>
+//   );
+// };
 
 const specTarget = {
   drop(props) {
@@ -116,17 +117,17 @@ const collectSource = (connect, monitor) => ({
   isDragging: monitor.isDragging(),
 });
 
-const collectLayer = monitor => {
-  return {
-    item: monitor.getItem(),
-    itemType: monitor.getItemType(),
-    initialOffset: monitor.getInitialSourceClientOffset(),
-    currentOffset: monitor.getSourceClientOffset(),
-    isDragging: monitor.isDragging(),
-  };
-};
+// const collectLayer = monitor => {
+//   return {
+//     item: monitor.getItem(),
+//     itemType: monitor.getItemType(),
+//     initialOffset: monitor.getInitialSourceClientOffset(),
+//     currentOffset: monitor.getSourceClientOffset(),
+//     isDragging: monitor.isDragging(),
+//   };
+// };
 
-const CustomDragLayerWithDnD = DragLayer(collectLayer)(CustomDragLayer);
+// const CustomDragLayerWithDnD = DragLayer(collectLayer)(CustomDragLayer);
 
 const CardWithDnD = DropTarget(typeCard, specTarget, collectTarget)(
   DragSource(typeCard, specSource, collectSource)(Card),
