@@ -10,7 +10,7 @@ const style = {
   cursor: 'move',
 };
 
-const cardSource = {
+const dragSourceSpec = {
   beginDrag(props) {
     return {
       index: props.index,
@@ -28,7 +28,7 @@ const cardSource = {
   },
 };
 
-const cardTarget = {
+const dropTargetSpec = {
   hover(props, monitor, component) {
     const dragIndex = monitor.getItem().index;
     const hoverIndex = props.index;
@@ -78,13 +78,17 @@ const cardTarget = {
   },
 };
 
-@DropTarget('CARD', cardTarget, connect => ({
-  connectDropTarget: connect.dropTarget(),
-}))
-@DragSource('CARD', cardSource, (connect, monitor) => ({
+const dragSourceCollect = (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging(),
-}))
+});
+
+const dropTargetCollect = connect => ({
+  connectDropTarget: connect.dropTarget(),
+});
+
+@DragSource('CARD', dragSourceSpec, dragSourceCollect)
+@DropTarget('CARD', dropTargetSpec, dropTargetCollect)
 class Card extends Component {
   render() {
     const {

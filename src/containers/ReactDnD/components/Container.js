@@ -3,7 +3,7 @@ import update from 'immutability-helper';
 import { DropTarget } from 'react-dnd';
 import Card from './Card';
 
-const cardTarget = {
+const dropTargetSpec = {
   drop(props, monitor, component) {
     const { id } = props;
     const sourceObj = monitor.getItem();
@@ -14,11 +14,13 @@ const cardTarget = {
   },
 };
 
-@DropTarget('CARD', cardTarget, (connect, monitor) => ({
+const dropTargetCollect = (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
   isOver: monitor.isOver(),
   canDrop: monitor.canDrop(),
-}))
+});
+
+@DropTarget('CARD', dropTargetSpec, dropTargetCollect)
 class Container extends Component {
   constructor(props) {
     super(props);
