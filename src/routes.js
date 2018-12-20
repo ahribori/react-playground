@@ -25,6 +25,7 @@ import {
   ImageCrop,
   ReactDnD,
   ReactSortable,
+  ReactDatePickerExample,
 } from './containers';
 
 export default (
@@ -53,5 +54,6 @@ export default (
     <Route exact path="/image_crop" component={ImageCrop} />
     <Route exact path="/react_dnd" component={ReactDnD} />
     <Route exact path="/react_sortable" component={ReactSortable} />
+    <Route exact path="/react_datepicker" component={ReactDatePickerExample} />
   </Switch>
 );

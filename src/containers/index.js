@@ -21,6 +21,7 @@ import ReactHooks from './ReactHooks';
 import ImageCrop from './ImageCrop';
 import ReactDnD from './ReactDnD/ReactDnD';
 import ReactSortable from './ReactDnD/ReactSortable';
+import ReactDatePickerExample from './ReactDatepickerExample';
 
 export {
   Home,
@@ -46,4 +47,5 @@ export {
   ImageCrop,
   ReactDnD,
   ReactSortable,
+  ReactDatePickerExample,
 };
