@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Formik, Field, FastField, ErrorMessage } from 'formik';
 
 class FormikExample extends Component {
   userInputHooks = next => e => {
@@ -66,6 +66,7 @@ class FormikExample extends Component {
   render() {
     return (
       <div>
+        <h1>Basic</h1>
         <Formik
           initialValues={{
             email: '',
@@ -78,132 +79,169 @@ class FormikExample extends Component {
             color: 'red',
           }}
           validate={this.formLevelValidate}
-          render={props => (
-            <form action="">
-              <div>
-                <label htmlFor="email">이메일</label>
-                <Field
-                  type="text"
-                  onChange={this.userInputHooks(props.handleChange)}
-                  onBlur={props.handleBlur}
-                  value={props.values.email}
-                  name="email"
-                  validate={this.validateEmail}
-                />
-                <ErrorMessage name="email" />
-              </div>
-              <div>
-                <label htmlFor="name">이름</label>
-                <Field
-                  type="text"
-                  onChange={this.userInputHooks(props.handleChange)}
-                  onBlur={props.handleBlur}
-                  value={props.values.name}
-                  name="name"
-                  validate={this.validateName}
-                />
-                <ErrorMessage name="name" />
-              </div>
-              <div>
-                <label htmlFor="age">나이</label>
-                <Field
-                  type="text"
-                  onChange={this.userInputHooks(props.handleChange)}
-                  onBlur={props.handleBlur}
-                  value={props.values.age}
-                  name="age"
-                  validate={this.validateAge}
-                />
-                <ErrorMessage name="age" />
-              </div>
-              <div>
-                <label htmlFor="agree">모두 동의</label>
-                <Field
-                  type="checkbox"
-                  name="allAgree"
-                  checked={
-                    props.values.agree1 &&
-                    props.values.agree2 &&
-                    props.values.agree3
-                  }
-                  onChange={() => {
-                    const { values, setValues } = props;
-                    const { agree1, agree2, agree3 } = values;
-                    if (agree1 || agree2 || agree3) {
-                      values.agree1 = false;
-                      values.agree2 = false;
-                      values.agree3 = false;
-                    } else {
-                      values.agree1 = true;
-                      values.agree2 = true;
-                      values.agree3 = true;
+          render={props => {
+            return (
+              <form action="">
+                <div>
+                  <label htmlFor="email">이메일</label>
+                  <Field
+                    type="text"
+                    onChange={this.userInputHooks(props.handleChange)}
+                    onBlur={props.handleBlur}
+                    value={props.values.email}
+                    name="email"
+                    validate={this.validateEmail}
+                  />
+                  <ErrorMessage name="email" />
+                </div>
+                <div>
+                  <label htmlFor="name">이름</label>
+                  <Field
+                    type="text"
+                    onChange={this.userInputHooks(props.handleChange)}
+                    onBlur={props.handleBlur}
+                    value={props.values.name}
+                    name="name"
+                    validate={this.validateName}
+                  />
+                  <ErrorMessage name="name" />
+                </div>
+                <div>
+                  <label htmlFor="age">나이</label>
+                  <Field
+                    type="text"
+                    onChange={this.userInputHooks(props.handleChange)}
+                    onBlur={props.handleBlur}
+                    value={props.values.age}
+                    name="age"
+                    validate={this.validateAge}
+                  />
+                  <ErrorMessage name="age" />
+                </div>
+                <div>
+                  <label htmlFor="agree">모두 동의</label>
+                  <Field
+                    type="checkbox"
+                    name="allAgree"
+                    checked={
+                      props.values.agree1 &&
+                      props.values.agree2 &&
+                      props.values.agree3
                     }
-                    setValues(values);
-                  }}
-                />
-              </div>
+                    onChange={() => {
+                      const { values, setValues } = props;
+                      const { agree1, agree2, agree3 } = values;
+                      if (agree1 || agree2 || agree3) {
+                        values.agree1 = false;
+                        values.agree2 = false;
+                        values.agree3 = false;
+                      } else {
+                        values.agree1 = true;
+                        values.agree2 = true;
+                        values.agree3 = true;
+                      }
+                      setValues(values);
+                    }}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="agree1">동의1</label>
+                  <Field
+                    type="checkbox"
+                    name="agree1"
+                    checked={props.values.agree1}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="agree2">동의2</label>
+                  <Field
+                    type="checkbox"
+                    name="agree2"
+                    checked={props.values.agree2}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="agree3">동의3</label>
+                  <Field
+                    type="checkbox"
+                    name="agree3"
+                    checked={props.values.agree3}
+                  />
+                </div>
+                <div>
+                  <Field component="select" name="color">
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                  </Field>
+                </div>
+                <div>
+                  <Field
+                    type="radio"
+                    name="color"
+                    value="red"
+                    id="radio_color_red"
+                    checked={props.values.color === 'red'}
+                  />
+                  <label htmlFor="radio_color_red">red</label>
+                  <Field
+                    type="radio"
+                    name="color"
+                    value="green"
+                    id="radio_color_green"
+                    checked={props.values.color === 'green'}
+                  />
+                  <label htmlFor="radio_color_green">green</label>
+                  <Field
+                    type="radio"
+                    name="color"
+                    value="blue"
+                    id="radio_color_blue"
+                    checked={props.values.color === 'blue'}
+                  />
+                  <label htmlFor="radio_color_blue">blue</label>
+                </div>
+                <button onClick={this.handleSubmit(props)} type="button">
+                  submit
+                </button>
+              </form>
+            );
+          }}
+        />
+
+        <h1>Large form</h1>
+        <Formik
+          initialValues={{
+            a: false,
+            b: false,
+            c: false,
+            d: false,
+            e: false,
+            f: false,
+            g: false,
+            h: false,
+            i: false,
+            j: false,
+            k: false,
+          }}
+          render={props => {
+            console.log(props.values);
+            return (
               <div>
-                <label htmlFor="agree1">동의1</label>
-                <Field
-                  type="checkbox"
-                  name="agree1"
-                  checked={props.values.agree1}
-                />
+                a<FastField type="checkbox" name="a" checked={props.values.a} />
+                b<FastField type="checkbox" name="b" checked={props.values.b} />
+                c<FastField type="checkbox" name="c" checked={props.values.c} />
+                d<FastField type="checkbox" name="d" checked={props.values.d} />
+                e<FastField type="checkbox" name="e" checked={props.values.e} />
+                f<FastField type="checkbox" name="f" checked={props.values.f} />
+                g<FastField type="checkbox" name="g" checked={props.values.g} />
+                h<FastField type="checkbox" name="h" checked={props.values.h} />
+                i<FastField type="checkbox" name="i" checked={props.values.i} />
+                j<FastField type="checkbox" name="j" checked={props.values.j} />
+                k<FastField type="checkbox" name="k" checked={props.values.k} />
               </div>
-              <div>
-                <label htmlFor="agree2">동의2</label>
-                <Field
-                  type="checkbox"
-                  name="agree2"
-                  checked={props.values.agree2}
-                />
-              </div>
-              <div>
-                <label htmlFor="agree3">동의3</label>
-                <Field
-                  type="checkbox"
-                  name="agree3"
-                  checked={props.values.agree3}
-                />
-              </div>
-              <div>
-                <Field component="select" name="color">
-                  <option value="red">Red</option>
-                  <option value="green">Green</option>
-                  <option value="blue">Blue</option>
-                </Field>
-              </div>
-              <div>
-                <Field
-                  type="radio"
-                  name="color"
-                  value='red'
-                  id="radio_color_red"
-                  checked={props.values.color === 'red'}
-                />
-                <label htmlFor="radio_color_red">red</label>
-                <Field
-                  type="radio"
-                  name="color"
-                  value='green'
-                  id="radio_color_green"
-                  checked={props.values.color === 'green'}
-                />
-                <label htmlFor="radio_color_green">green</label>
-                <Field
-                  type="radio"
-                  name="color"
-                  value='blue'
-                  id="radio_color_blue"
-                  checked={props.values.color === 'blue'}
-                />
-                <label htmlFor="radio_color_blue">blue</label>
-              </div>
-              <button onClick={this.handleSubmit(props)} type="button">
-                submit
-              </button>
-            </form>
-          )}
+            );
+          }}
         />
       </div>
     );

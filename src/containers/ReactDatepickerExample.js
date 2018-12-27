@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import Datepicker from 'react-datepicker';
+import Datepicker, { registerLocale } from 'react-datepicker';
+// import ko from 'date-fns/locale/ko';
 import 'react-datepicker/dist/react-datepicker.css';
+
+// registerLocale('ko', ko);
+//
+// console.log(ko)
 
 class ReactDatepickerExample extends Component {
   state = {
@@ -20,6 +25,7 @@ class ReactDatepickerExample extends Component {
           dropdownMode={'scroll'}
           onChange={this.handleChange}
           selected={date}
+          // locale={'ko'}
         />
       </div>
     );
