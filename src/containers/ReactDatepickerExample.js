@@ -16,6 +16,14 @@ import 'react-datepicker/dist/react-datepicker.css';
  */
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
+
+/**
+ * React Datetime
+ */
+import ReactDatetime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css';
+import 'moment/locale/ko';
+
 const MONTHS = [
   '1월',
   '2월',
@@ -40,10 +48,6 @@ const WEEKDAYS_LONG = [
   '토요일',
 ];
 const WEEKDAYS_SHORT = ['일', '월', '화', '수', '목', '금', '토'];
-
-/**
- * React Datetime
- */
 
 class ReactDatepickerExample extends Component {
   state = {
@@ -76,6 +80,14 @@ class ReactDatepickerExample extends Component {
             weekdaysLong: WEEKDAYS_LONG,
             weekdaysShort: WEEKDAYS_SHORT,
           }}
+        />
+
+        <h1>React Datetime</h1>
+        <ReactDatetime
+          defaultValue={date}
+          closeOnSelect={true}
+          locale="ko"
+          viewMode='days'
         />
       </div>
     );
