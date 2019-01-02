@@ -21,7 +21,7 @@ import ReactHooks from './ReactHooks';
 import ImageCrop from './ImageCrop';
 import ReactDnD from './ReactDnD/ReactDnD';
 import ReactSortable from './ReactDnD/ReactSortable';
-import ReactDatePickerExample from './ReactDatepickerExample';
+import ReactDatePickerExample from './ReactDatePicker/ReactDatepickerExample';
 
 export {
   Home,

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Formik } from 'formik';
 
 /**
  * React Datepicker
@@ -23,6 +24,13 @@ import 'react-day-picker/lib/style.css';
 import ReactDatetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import 'moment/locale/ko';
+
+/**
+ * React Timepicker
+ */
+import TimePicker from 'rc-time-picker';
+import 'rc-time-picker/assets/index.css';
+import './index.css';
 
 const MONTHS = [
   '1월',
@@ -87,7 +95,29 @@ class ReactDatepickerExample extends Component {
           defaultValue={date}
           closeOnSelect={true}
           locale="ko"
-          viewMode='days'
+          viewMode="days"
+        />
+
+        <h1>RC Time Picker</h1>
+        <Formik
+          initialValues={{ time: '' }}
+          render={props => {
+            console.log(props.values);
+            return (
+              <TimePicker
+                showSecond={false}
+                minuteStep={30}
+                style={{
+                  width: 500,
+                }}
+                name="time"
+                onChange={moment => {
+                  props.values.time = moment.format('hh:mm');
+                  props.setValues(props.values);
+                }}
+              />
+            );
+          }}
         />
       </div>
     );
