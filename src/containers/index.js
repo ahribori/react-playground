@@ -22,6 +22,7 @@ import ImageCrop from './ImageCrop';
 import ReactDnD from './ReactDnD/ReactDnD';
 import ReactSortable from './ReactDnD/ReactSortable';
 import ReactDatePickerExample from './ReactDatePicker/ReactDatepickerExample';
+import ReactTransitionGroup from './ReactTransitionGroup/ReactTransitionGroup';
 
 export {
   Home,
@@ -48,4 +49,5 @@ export {
   ReactDnD,
   ReactSortable,
   ReactDatePickerExample,
+  ReactTransitionGroup,
 };
