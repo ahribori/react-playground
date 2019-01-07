@@ -55,13 +55,60 @@ const Card = ({ index }) => {
 };
 
 class ReactTransitionGroup extends Component {
+  state = {
+    start: false,
+    show: false,
+  };
+
+  open = () => {
+    this.setState({
+      start: true,
+      show: true,
+    });
+  };
+
+  onExited = () => {
+    setTimeout(() => {
+      this.setState({
+        show: false,
+      });
+    }, duration);
+  };
 
   render() {
+    const { start, show } = this.state;
     return (
       <div>
         {Array.from(Array(10)).map((node, index) => {
           return <Card key={`card_${index}`} index={index} />;
         })}
+
+        <div>
+          <button onClick={() => this.setState({ start: true, show: true })}>
+            show
+          </button>
+          <button onClick={() => this.setState({ start: false })}>hide</button>
+        </div>
+
+        <div>
+          {show && (
+            <Transition
+              in={start}
+              timeout={0}
+              appear={true}
+              onExited={this.onExited}
+            >
+              {state => {
+                console.log(state);
+                return (
+                  <div
+                    style={{ ...defaultStyle, ...transitionStyles[state] }}
+                  />
+                );
+              }}
+            </Transition>
+          )}
+        </div>
       </div>
     );
   }
