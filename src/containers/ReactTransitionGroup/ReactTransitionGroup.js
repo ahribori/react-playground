@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Transition } from 'react-transition-group';
+import Grow from './Grow';
 
 const duration = 300;
 
@@ -108,6 +109,12 @@ class ReactTransitionGroup extends Component {
               }}
             </Transition>
           )}
+        </div>
+
+        <div>
+          <Grow in={start}>
+            Hello, world!
+          </Grow>
         </div>
       </div>
     );
