@@ -23,6 +23,7 @@ import ReactDnD from './ReactDnD/ReactDnD';
 import ReactSortable from './ReactDnD/ReactSortable';
 import ReactDatePickerExample from './ReactDatePicker/ReactDatepickerExample';
 import ReactTransitionGroup from './ReactTransitionGroup/ReactTransitionGroup';
+import ReactCollapsible from './ReactCollasible/ReactCollapsible';
 
 export {
   Home,
@@ -50,4 +51,5 @@ export {
   ReactSortable,
   ReactDatePickerExample,
   ReactTransitionGroup,
+  ReactCollapsible
 };

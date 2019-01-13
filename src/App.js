@@ -36,6 +36,7 @@ class App extends React.Component {
             <li><Link to={'/react_sortable'}>React Sortable</Link></li>
             <li><Link to={'/react_datepicker'}>React Datepicker</Link></li>
             <li><Link to={'/react_transition_group'}>React Transition Group</Link></li>
+            <li><Link to={'/react_collapsible'}>React Collapsible</Link></li>
         </ul>
     );
 

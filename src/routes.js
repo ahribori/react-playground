@@ -27,6 +27,7 @@ import {
   ReactSortable,
   ReactDatePickerExample,
   ReactTransitionGroup,
+  ReactCollapsible
 } from './containers';
 
 export default (
@@ -56,6 +57,7 @@ export default (
     <Route exact path="/react_dnd" component={ReactDnD} />
     <Route exact path="/react_sortable" component={ReactSortable} />
     <Route exact path="/react_datepicker" component={ReactDatePickerExample} />
+    <Route exact path="/react_collapsible" component={ReactCollapsible} />
     <Route
       exact
       path="/react_transition_group"
