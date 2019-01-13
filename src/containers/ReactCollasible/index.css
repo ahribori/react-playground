@@ -1,0 +1,28 @@
+.container {
+    position: relative;
+    width: 500px;
+}
+
+.Collapsible * {
+    box-sizing: border-box;
+    position: relative;
+}
+
+.Collapsible__trigger {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.Collapsible__trigger.is-closed{
+    color: red;
+}
+
+.Collapsible__trigger.is-open{
+    color: blue;
+}
+
+.Collapsible__contentOuter {
+}
+
+.Collapsible__contentInner {
+}
