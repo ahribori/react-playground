@@ -50,9 +50,18 @@ class RegExViewer extends Component {
       const regExp = new RegExp(regex, 'gi');
       result = regExp.exec(text);
     } catch (e) {}
-    
-    console.log(result)
 
+    const matched = result ? result[0] : null;
+    const results =
+      matched && matched !== ''
+        ? text.replace(
+            new RegExp(matched, 'gi'),
+            `<span style="color:red">${matched}</span>`,
+          )
+        : text;
+
+    console.log(result)
+    
     return (
       <div style={styles.container}>
         <div style={styles.leftContainer}>
@@ -74,7 +83,7 @@ class RegExViewer extends Component {
           />
         </div>
         <div style={styles.rightContainer}>
-          <div style={styles.viewer}>{text}</div>
+          <div style={styles.viewer} dangerouslySetInnerHTML={{ __html: results }} />
         </div>
       </div>
     );
