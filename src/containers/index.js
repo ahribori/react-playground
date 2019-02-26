@@ -25,6 +25,7 @@ import ReactDatePickerExample from './ReactDatePicker/ReactDatepickerExample';
 import ReactTransitionGroup from './ReactTransitionGroup/ReactTransitionGroup';
 import ReactCollapsible from './ReactCollasible/ReactCollapsible';
 import RegExViewer from './RegExViewer';
+import ReactSelectExample from './ReactSelectExample';
 
 export {
   Home,
@@ -54,4 +55,5 @@ export {
   ReactTransitionGroup,
   ReactCollapsible,
   RegExViewer,
+  ReactSelectExample,
 };
