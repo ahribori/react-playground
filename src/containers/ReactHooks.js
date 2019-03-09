@@ -1,15 +1,34 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 
 const Counter = () => {
-  const [value /* 값 */, setValue /* 값을 변화시킬 수 있는 setter */] = useState(0 /* 초기값 */);
+  const [
+    counter /* 값 */,
+    setCounter /* 값을 변화시킬 수 있는 setter */,
+  ] = useState(0 /* 초기값 */);
+  const [name, setName] = useState('Daniel');
+
+  useEffect(
+    () => {
+      console.log('counter가 변경 됨', counter);
+    },
+    [counter],
+  );
+
+  useEffect(
+    () => {
+      console.log('name이 변경됨', name);
+    },
+    [name],
+  );
 
   return (
     <div>
       <p>
-        <b>{value}</b>번 누르셨습니다.
+        <b>{counter}</b>번 누르셨습니다.
       </p>
-      <button onClick={() => setValue(value + 1)}>+1</button>
-      <button onClick={() => setValue(value - 1)}>-1</button>
+      <button onClick={() => setCounter(counter + 1)}>+1</button>
+      <button onClick={() => setCounter(counter - 1)}>-1</button>
+      <input type="text" value={name} onChange={e => setName(e.target.value)} />
     </div>
   );
 };
