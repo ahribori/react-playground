@@ -7,6 +7,15 @@ const Counter = () => {
   ] = useState(0 /* 초기값 */);
   const [name, setName] = useState('Daniel');
 
+  const asyncTask = async () => {
+    await new Promise(resolve => {
+      setTimeout(() => {
+        console.log('resolve');
+        resolve();
+      }, 1000);
+    });
+  };
+
   useEffect(
     () => {
       console.log('counter가 변경 됨', counter);
@@ -17,8 +26,16 @@ const Counter = () => {
   useEffect(
     () => {
       console.log('name이 변경됨', name);
+      asyncTask();
     },
     [name],
+  );
+
+  useEffect(
+    () => {
+      console.log('kkk');
+    },
+    [], // watch 할 게 없으면 최초 한 번만 실행됨
   );
 
   return (
