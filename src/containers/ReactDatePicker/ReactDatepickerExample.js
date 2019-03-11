@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Formik } from 'formik';
+import * as dateFns from 'date-fns';
 
 /**
  * React Datepicker
@@ -67,10 +68,33 @@ class ReactDatepickerExample extends Component {
     this.setState({ date: selectedDate });
   };
 
+  addDays = amount =>
+    this.setState({ date: dateFns.addDays(this.state.date, amount) });
+
   render() {
     const { date } = this.state;
     return (
       <div>
+        <h1> Current: {dateFns.format(date, 'yyyy-MM-dd')}</h1>
+        <button
+          onClick={() => {
+            this.addDays(-1);
+          }}
+        >
+          어제
+        </button>
+        <button
+          onClick={() => {
+            this.setState({ date: new Date() });
+          }}
+        >
+          오늘
+        </button>
+        <button
+          onClick={() => {
+            this.addDays(1)
+          }}>내일</button>
+        <hr />
         <h1>React Datepicker Example</h1>
         <Datepicker
           dropdownMode={'scroll'}
@@ -102,7 +126,6 @@ class ReactDatepickerExample extends Component {
         <Formik
           initialValues={{ time: '' }}
           render={props => {
-            console.log(props.values);
             return (
               <TimePicker
                 showSecond={false}
@@ -121,6 +144,10 @@ class ReactDatepickerExample extends Component {
         />
       </div>
     );
+  }
+
+  componentDidMount() {
+    console.log(dateFns.getSeconds(new Date()));
   }
 }
 
