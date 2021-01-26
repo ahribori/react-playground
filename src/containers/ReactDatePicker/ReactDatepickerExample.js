@@ -5,7 +5,7 @@ import * as dateFns from 'date-fns';
 /**
  * React Datepicker
  */
-import Datepicker, { registerLocale } from 'react-datepicker';
+import Datepicker  from 'react-datepicker';
 // import ko from 'date-fns/locale/ko';
 import 'react-datepicker/dist/react-datepicker.css';
 
