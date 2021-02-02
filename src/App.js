@@ -39,6 +39,7 @@ class App extends React.Component {
             <li><Link to={'/react_collapsible'}>React Collapsible</Link></li>
             <li><Link to={'/regex_viewer'}>Regex Viewer</Link></li>
             <li><Link to={'/react_select'}>React Select</Link></li>
+            <li><Link to={'/json_viewer'}>Json Viewer</Link></li>
         </ul>
     );
 

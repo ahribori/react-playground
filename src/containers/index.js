@@ -26,6 +26,7 @@ import ReactTransitionGroup from './ReactTransitionGroup/ReactTransitionGroup';
 import ReactCollapsible from './ReactCollasible/ReactCollapsible';
 import RegExViewer from './RegExViewer';
 import ReactSelectExample from './ReactSelectExample';
+import JsonViewer from './JsonViewer';
 
 export {
   Home,
@@ -56,4 +57,5 @@ export {
   ReactCollapsible,
   RegExViewer,
   ReactSelectExample,
+  JsonViewer,
 };

@@ -59,6 +59,7 @@
     "react-dnd-html5-backend": "^7.0.2",
     "react-dom": "^16.8.4",
     "react-image": "^1.4.1",
+    "react-json-view": "^1.20.4",
     "react-jss": "^8.6.1",
     "react-load-script": "0.0.6",
     "react-particles-js": "^2.3.0",

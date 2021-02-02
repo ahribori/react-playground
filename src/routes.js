@@ -30,6 +30,7 @@ import {
   ReactCollapsible,
   RegExViewer,
   ReactSelectExample,
+  JsonViewer,
 } from './containers';
 
 export default (
@@ -62,6 +63,7 @@ export default (
     <Route exact path="/react_collapsible" component={ReactCollapsible} />
     <Route exact path="/regex_viewer" component={RegExViewer} />
     <Route exact path="/react_select" component={ReactSelectExample} />
+    <Route exact path="/json_viewer" component={JsonViewer} />
     <Route
       exact
       path="/react_transition_group"
