@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactJson from 'react-json-view';
+import { ResizableBox } from 'react-resizable';
+import 'react-resizable/css/styles.css';
 
 const JsonViewer = () => {
   const json = {
@@ -28,12 +30,32 @@ const JsonViewer = () => {
 
   return (
     <div>
-      <ReactJson
-        src={json}
-        indentWidth={2}
-        displayDataTypes={false}
-        theme={'monokai'}
-      />
+      <ResizableBox
+        className="box"
+        width={200}
+        height={200}
+        draggableOpts={{ grid: [25, 25] }}
+        style={{
+          paddingBottom: 24,
+        }}
+      >
+        <div
+          style={{
+            overflowY: 'scroll',
+            margin: 20,
+            height: '100%',
+            border: '1px solid grey',
+            padding: 8,
+          }}
+        >
+          <ReactJson
+            src={json}
+            indentWidth={2}
+            displayDataTypes={false}
+            style={{ fontSize: 11 }}
+          />
+        </div>
+      </ResizableBox>
     </div>
   );
 };
